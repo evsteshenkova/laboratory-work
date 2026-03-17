@@ -1,7 +1,36 @@
+# Секреты и окружение
 .env
+.env.local
+*.env
+
+# Python
 __pycache__/
-*.pyc
-pgdata/
-mlflow/
+*.py[cod]
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
 .DS_Store
-.venv/
+
+# Docker
+pgdata/
+*.pid
+*.sock
+
+# Alembic
+migrations/versions/__pycache__/
+migrations/__pycache__/
+
+# Базы данных
+*.db
+*.sqlite
