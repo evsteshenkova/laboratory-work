@@ -1,0 +1,17 @@
+body {
+    font-family: Arial;
+    padding: 20px;
+}
+
+.status {
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.students {
+    background: #e3f2fd;
+    padding: 10px;
+    border-radius: 5px;
+}
