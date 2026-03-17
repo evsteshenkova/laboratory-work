@@ -36,6 +36,18 @@ def db_check():
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
 
+@app.route('/api/students', methods=['GET'])
+def get_students():
+    students = Student.query.all()
+    return jsonify([s.to_dict() for s in students])
+
+
+@app.route('/api/students/<int:id>', methods=['GET'])
+def get_student(id):
+    student = Student.query.get_or_404(id)
+    return jsonify(student.to_dict())
+
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()  # временно
