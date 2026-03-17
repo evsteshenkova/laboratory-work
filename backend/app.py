@@ -21,7 +21,9 @@ def index():
         'service': 'backend',
         'status': 'running',
         'endpoints': [
-            '/db-check'
+            '/db-check',
+            '/students',
+            '/students/<int:id>'
         ]
     })
 
@@ -46,6 +48,42 @@ def get_students():
 def get_student(id):
     student = Student.query.get_or_404(id)
     return jsonify(student.to_dict())
+
+@app.route('/api/students', methods=['POST'])
+def create_student():
+    data = request.json
+    student = Student(
+        name=data['name'],
+        distance_km=data['distance_km'],
+        grade=data['grade']
+    )
+    db.session.add(student)
+    db.session.commit()
+    return jsonify(student.to_dict()), 201
+
+
+@app.route('/api/students/<int:id>', methods=['PUT'])
+def update_student(id):
+    student = Student.query.get_or_404(id)
+    data = request.json
+
+    if 'name' in data:
+        student.name = data['name']
+    if 'distance_km' in data:
+        student.distance_km = data['distance_km']
+    if 'grade' in data:
+        student.grade = data['grade']
+
+    db.session.commit()
+    return jsonify(student.to_dict())
+
+
+@app.route('/api/students/<int:id>', methods=['DELETE'])
+def delete_student(id):
+    student = Student.query.get_or_404(id)
+    db.session.delete(student)
+    db.session.commit()
+    return jsonify({'message': 'Student deleted'}), 200
 
 
 if __name__ == '__main__':
