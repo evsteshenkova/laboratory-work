@@ -1,0 +1,7 @@
+.env
+__pycache__/
+*.pyc
+pgdata/
+mlflow/
+.DS_Store
+.venv/
