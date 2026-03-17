@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 import os
 from models import db, Student, Prediction
 
@@ -10,22 +10,9 @@ app.config[
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
-
-app = Flask(__name__)
-app.config['JSON_AS_ASCII'] = False
-
-
 @app.route('/')
 def index():
-    return jsonify({
-        'service': 'backend',
-        'status': 'running',
-        'endpoints': [
-            '/db-check',
-            '/students',
-            '/students/<int:id>'
-        ]
-    })
+    return render_template('index.html')
 
 
 @app.route('/db-check')
