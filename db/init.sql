@@ -1,12 +1,5 @@
-# РЕАЛИЗОВАНО ИСКЛЮЧИТЕЛЬНО ДЛЯ ТЕСТИРОВАНИЯ СЕРВИСА!
-
-CREATE TABLE students (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100),
-    distance_km FLOAT,
-    grade FLOAT
-);
+-- Тестовые данные для первичного наполнения базы
 
 INSERT INTO students (name, distance_km, grade) VALUES
-    ('Иван Петров', 0.5, 4.8),
-    ('Мария Иванова', 12.0, 2.5);
+    ('Ivan Petrov', 0.5, 4.8),
+    ('Mariya Ivanova', 12.0, 2.5);
